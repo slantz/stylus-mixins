@@ -1,0 +1,45 @@
+@media (min-width: 128px) {
+  html {
+    font-size: 2px;
+  }
+}
+@media (min-width: 192px) {
+  html {
+    font-size: 3px;
+  }
+}
+@media (min-width: 256px) {
+  html {
+    font-size: 4px;
+  }
+}
+@media (min-width: 320px) {
+  html {
+    font-size: 5px;
+  }
+}
+@media (min-width: 384px) {
+  html {
+    font-size: 6px;
+  }
+}
+@media (min-width: 448px) {
+  html {
+    font-size: 7px;
+  }
+}
+@media (min-width: 512px) {
+  html {
+    font-size: 8px;
+  }
+}
+@media (min-width: 576px) {
+  html {
+    font-size: 9px;
+  }
+}
+@media (min-width: 640px) {
+  html {
+    font-size: 10px;
+  }
+}

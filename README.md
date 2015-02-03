@@ -40,10 +40,20 @@ Old browsers wiil use ```px``` values while new ones will overwright this value 
 But be sure that every extra line of code is always redundant unless you are confident with computing powers of devices you are coding for. And not afraid of possible repainting overwhelmings.
 
 ### Base-Font mixin
+In case you need to design fully flexible and "rubber" mobile site, or some application based on HTML views, and you want to be confident about different screen sizes, then due to this technique you will have same view on any device iff your mockup is fine for sure)).
+
 While setting body font-size based on the initial width of a designer's mockup, the resulting layout will be absolutely independent and scaled to any screen width on its own. Here
 
 - ```$initial-mockup-width``` variable represents the PSD (or other format) width of the mobile mockup.
-- ```$desirable-base-font``` variable represents the html base font, which you'd prefer to use for your calculations of ```rem``` values.
+- ```$mdeia-divider-step``` variable represents the step of media-query iteration in order to set the ```<html>``` element's font-size to be integer.
+- ```$mdeia-lowest-width``` variable represents the lowest min-width media-query if there's no need t osupport tiny screens, by default will be ```0```.
+- ```$base-font``` variable represents the html base font, which you'd prefer to use for your calculations of ```rem``` values.
+
+So if we have some mockup, e.g. designed for iPhone 5 screen, designers always draw in real device pixels, not taking into account the virtual ones, so the mockup width will be ```640px```.
+
+Font-size for our project will be ```10px``` (it's always ease to divide by 10 inwardly). To preserve all the ratios of the mockup on any screen we will need to iterate the ```<html>``` base font-size. For instance for ```320px width screen``` the font-isze for ```<html>``` will be decreased by two, because mockup width divided by initial base-font will give us step of other divisions. And current screen width divided by this step will be ```320 / (640 / 10) = 5``` which is exactly twice less than initial base font-size.
+
+And as ```rem``` values calculated from the root of the document => all dimensions will be lessened twice.
 
 ### Prefixer mixin
 This mixin will help to generate proper vendor prefixes for css properties. You should always try not to use obsolete vendors, it's always extra unnecessary code, extra file weight and some extra headache for webview rendering engine. It's real pain for heavy huge projects.

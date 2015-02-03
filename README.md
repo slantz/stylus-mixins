@@ -9,10 +9,28 @@ The difference from other mixins is that's not hardcoded prefixes for each prope
 ### Rem mixin
 I prefer to develop sites using rem values instead of pixels for browser to calculate dimensions on it's own. Or it's the best solution to make mobile layout for sites or apps without need to test on devices. Because the ```px``` value on mobile devices with different dpi will show the virtual pixel size, but the ```rem``` will show the real pixels instead.
 
-#### usage sample:
-    - 1
-    - 2
-    - 3
+You can pass:
+1. one argument;
+2. or arbitrary number of arguments where zero values will be left untouched;
+3. additional key words
+4. other built-in or arbitrary mixins;
+5. special words like auto;
+
+Let the basic ```$font-size``` be 10px
+
+##### Mixin sample:
+    1. rem(left,1)
+    2. rem(padding,10 5 12 0)
+    3. rem(border,1,solid green)
+    4. rem(box-shadow,1 1 0 -1,rgba(0,0,0,0.3))
+    5. rem(margin,10 auto 3)
+
+##### Compiled sample:
+    1. left: 0.1rem;
+    2. padding: 1rem 0.5rem 1.2rem 0;
+    3. border: 0.1rem solid #008000;
+    4. box-shadow: 0.1rem 0.1rem 0 -0.1rem rgba(0,0,0,0.3);
+    5. margin: 1rem auto 0.3rem;
 
 ### Px-To-Rem mixin
 If you don't use some global variable for compilation separate files for browsers that don't support rems to compile proper pixel fallback, then feel free to use this mixin to generate css blocks with both ```px``` and ```rem``` values.

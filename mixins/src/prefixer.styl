@@ -1,0 +1,25 @@
+prefixer(prop, args, amount = 0)
+  prefixes = (-webkit- -moz- -ms- -o-)
+  newPrefixes = {}
+  setNewPrefixes = false
+  topLimitFilter = 0
+  counter = 0
+  if amount is 0
+    for z in prefixes
+      {z}{prop} args
+  else
+    for z, zindex in prefixes
+      counter = 0
+      setNewPrefixes = true
+      topLimitFilter = length(amount)
+      for y in amount
+        if z isnt y
+          counter = counter + 1
+      if counter >= topLimitFilter
+        newPrefixes[join('',zindex 'a')] = z
+
+  if setNewPrefixes
+    for key,value in newPrefixes
+      {value}{prop} args
+
+  {prop} args

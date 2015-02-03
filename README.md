@@ -12,7 +12,7 @@ I prefer to develop sites using rem values instead of pixels for browser to calc
 You can pass:
 1. one argument;
 2. or arbitrary number of arguments where zero values will be left untouched;
-3. additional key words
+3. additional key words;
 4. other built-in or arbitrary mixins;
 5. special words like auto;
 
@@ -47,3 +47,28 @@ While setting body font-size based on the initial width of a designer's mockup, 
 
 ### Prefixer mixin
 This mixin will help to generate proper vendor prefixes for css properties. You should always try not to use obsolete vendors, it's always extra unnecessary code, extra file weight and some extra headache for webview rendering engine. It's real pain for heavy huge projects.
+
+You can pass:
+1. one argument;
+2. or arbitrary number of arguments;
+3. exclude redundant vendors.
+
+##### Mixin sample:
+    1. prefixer(border-radius,0)
+    2. prefixer(transform,unquote("rotateX(5deg) translateY(10px) skew(5deg,5deg)"))
+    3. prefixer(box-sizing,border-box,-moz- -ms-)
+
+##### Compiled sample:
+    1. -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+       -ms-border-radius: 0;
+       -o-border-radius: 0;
+       border-radius: 0;
+    2. -webkit-transform: rotateX(5deg) translateY(10px) skew(5deg,5deg);
+       -moz-transform: rotateX(5deg) translateY(10px) skew(5deg,5deg);
+       -ms-transform: rotateX(5deg) translateY(10px) skew(5deg,5deg);
+       -o-transform: rotateX(5deg) translateY(10px) skew(5deg,5deg);
+       transform: rotateX(5deg) translateY(10px) skew(5deg,5deg);
+    3. -webkit-box-sizing: border-box;
+       -o-box-sizing: border-box;
+       box-sizing: border-box;

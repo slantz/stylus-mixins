@@ -1,5 +1,5 @@
 html
   for i in 1..$base-font
-    if $media-divider-step * i >= ($mdeia-lowest-width is defined ? $mdeia-lowest-width : 0)
+    if $media-divider-step * i >= ($mdeia-lowest-width ?= 0)
       @media (min-width: ($media-divider-step * i)px)
         font-size: (i)px

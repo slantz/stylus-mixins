@@ -1,31 +1,40 @@
-rem(property,size,restLinkParams = false)
+px-to-rem(property,size,restLinkParams = false)
+  pxValue = null
   remValue = null
-  calculatedValue = 0
+  calculatedPxValue = 0
+  calculatedRemValue = 0
   for i in size
     if i isnt 0
       if i is a 'string' or i is a 'ident'
         if remValue isnt null
+          push(pxValue,i)
           push(remValue,i)
         else
+          pxValue = i
           remValue = i
       else
-        if not $is-ie8
-          calculatedValue = i / $base-font
-          calculatedValue = unit(calculatedValue,'rem')
-        else
-          calculatedValue = i
-          calculatedValue = unit(calculatedValue,'px')
+        calculatedRemValue = i / $base-font
+        calculatedRemValue = unit(calculatedRemValue,'rem')
+        calculatedPxValue = i
+        calculatedPxValue = unit(calculatedPxValue,'px')
         if remValue isnt null
-          push(remValue,calculatedValue)
+          push(pxValue,calculatedPxValue)
+          push(remValue,calculatedRemValue)
         else
-          remValue = calculatedValue
+          pxValue = calculatedPxValue
+          remValue = calculatedRemValue
     else
       if remValue isnt null
+        push(pxValue,i)
         push(remValue,i)
       else
+        pxValue = i
         remValue = i
 
   unless restLinkParams is false
+    pxValue = join(' ',pxValue restLinkParams)
+    pxValue = unquote(pxValue)
     remValue = join(' ',remValue restLinkParams)
     remValue = unquote(remValue)
+  {property} pxValue
   {property} remValue

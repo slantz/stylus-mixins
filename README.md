@@ -42,7 +42,34 @@ If you don't use some global variable for compilation separate files for browser
 
 Old browsers wiil use ```px``` values while new ones will overwright this value this ```rem``` one.
 
-But be sure that every extra line of code is always redundant unless you are confident with computing powers of devices you are coding for. And not afraid of possible repainting overwhelmings.
+But be aware of that every extra line of code is always redundant unless you are confident with computing powers of devices you are coding for. And not afraid of possible repainting overwhelmings. Here
+
+- ```$base-font``` global variable represents the initial divider for ```rem``` generation.
+
+You can pass:
+1. one argument;
+2. or arbitrary number of arguments where zero values will be left untouched;
+3. additional key words;
+4. other built-in or arbitrary mixins;
+5. special words like auto;
+
+Let the basic ```$font-size``` be 10px
+
+##### Mixin sample:
+    1. rem(left,1)
+    2. rem(padding,10 5 12 0)
+    3. rem(border,1,solid green)
+    4. rem(margin,10 auto 3)
+
+##### Compiled sample:
+    1. left: 1px;
+       left: 0.1rem;
+    2. padding: 10px 5px 12px 0;
+       padding: 1rem 0.5rem 1.2rem 0;
+    3. border: 1px solid #008000;
+       border: 0.1rem solid #008000;
+    4. margin: 10px auto 3px;
+    4. margin: 1rem auto 0.3rem;
 
 ### Base-Font mixin
 In case you need to design fully flexible and "rubber" mobile site, or some application based on HTML views, and you want to be confident about different screen sizes, then due to this technique you will have same view on any device iff your mockup is fine for sure)).

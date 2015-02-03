@@ -9,6 +9,11 @@ The difference from other mixins is that's not hardcoded prefixes for each prope
 ### Rem mixin
 I prefer to develop sites using rem values instead of pixels for browser to calculate dimensions on it's own. Or it's the best solution to make mobile layout for sites or apps without need to test on devices. Because the ```px``` value on mobile devices with different dpi will show the virtual pixel size, but the ```rem``` will show the real pixels instead.
 
+This mixin has a built-in fallback technique for old browsers. You should have some global variable set to true in order to calculate everything in pixels. Here
+
+- ```$is-ie8``` global variable tells mixin to generate pixel values instead of ```rems```.;
+- ```$base-font``` global variable represents the initial divider for ```rem``` generation.
+
 You can pass:
 1. one argument;
 2. or arbitrary number of arguments where zero values will be left untouched;

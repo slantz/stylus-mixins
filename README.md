@@ -11,7 +11,7 @@ I prefer to develop sites using rem values instead of pixels for browser to calc
 
 This mixin has a built-in fallback technique for old browsers. You should have some global variable set to true in order to calculate everything in pixels. Here
 
-- ```$is-ie8``` global variable tells mixin to generate pixel values instead of ```rems```.;
+- ```$is-ie8``` global variable tells mixin to generate pixel values instead of ```rems```;
 - ```$base-font``` global variable represents the initial divider for ```rem``` generation.
 
 You can pass:

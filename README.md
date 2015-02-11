@@ -130,7 +130,6 @@ But this technique is not working for simple ```<div>``` or any other block elem
 For instance, there's block ```640x320px```. The block is in the container width width ```1280px``` and has additinal margin of ```5px```. Mixin should be used with media-query ```@media (max-width: 1280px)```:
 
 ##### Mixin sample:
-    ```
     .backgrounded-div
         width 640px
         height 320px
@@ -138,10 +137,8 @@ For instance, there's block ```640x320px```. The block is in the container width
         background-size cover
         @media (max-width: 1280px)
           vw-responsive-block(640,320,1280,5)
-    ```
 
 ##### Compiled sample:
-    ```
     .backgrounded-div {
       width: 640px;
       height: 320px;
@@ -154,4 +151,3 @@ For instance, there's block ```640x320px```. The block is in the container width
         height: 24.9027237354086vw;
       }
     }
-    ```

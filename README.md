@@ -114,3 +114,44 @@ You can pass:
     3. -webkit-box-sizing: border-box;
        -o-box-sizing: border-box;
        box-sizing: border-box;
+
+### Viewport Width responsive Block Calculator Mixin
+This mixin is helpful for mobile layouts. Setting ```width : 100%``` and ```height : auto``` on ```<img>``` element tag will make browser automatically calculate the necessary height, preserving the image ratio.
+
+But this technique is not working for simple ```<div>``` or any other block element. Just setting ```height : auto``` or ```height : 100%``` will mend nothing.
+
+```vw``` and ```vh``` values will be used instead, they are barely used but have strong supported, starting from IE9. Here
+
+- ```iwidth``` variable represents the initial width of the block.
+- ```iheight``` variable represents the initial height of the block.
+- ```$vw``` variable represents the container's initial width if specified. Mixin should be implemented width media query lower than this value.
+- ```margins``` variable represents the additional margins around block, influencing on ratio.
+
+For instance, there's block ```640x320px```. The block is in the container width width ```1280px``` and has additinal margin of ```5px```. Mixin should be used with media-query ```@media (max-width: 1280px)```:
+
+##### Mixin sample:
+    ```
+    .backgrounded-div
+        width 640px
+        height 320px
+        background url('assets/img/super-awesome-bgr.png') 0 0 no-repeat scroll
+        background-size cover
+        @media (max-width: 1280px)
+          vw-responsive-block(640,320,1280,5)
+    ```
+
+##### Compiled sample:
+    ```
+    .backgrounded-div {
+      width: 640px;
+      height: 320px;
+      background: url("assets/img/super-awesome-bgr.png") 0 0 no-repeat scroll;
+      background-size: cover;
+    }
+    @media (max-width: 1280px) {
+      .backgrounded-div {
+        width: 50vw;
+        height: 24.9027237354086vw;
+      }
+    }
+    ```

@@ -43,3 +43,15 @@
     font-size: 10px;
   }
 }
+.backgrounded-div {
+  width: 640px;
+  height: 320px;
+  background: url("assets/img/super-awesome-bgr.png") 0 0 no-repeat scroll;
+  background-size: cover;
+}
+@media (max-width: 1280px) {
+  .backgrounded-div {
+    width: 50vw;
+    height: 24.9027237354086vw;
+  }
+}

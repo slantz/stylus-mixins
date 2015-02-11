@@ -1,3 +1,11 @@
 @import "vars/var"
 
 @import "mixins/mixin"
+
+.backgrounded-div
+  width 640px
+  height 320px
+  background url('assets/img/super-awesome-bgr.png') 0 0 no-repeat scroll
+  background-size cover
+  @media (max-width: 1280px)
+    vw-responsive-block(640,320,1280,5)

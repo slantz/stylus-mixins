@@ -1,0 +1,18 @@
+vw-responsive-block(iwidth, iheight, $vw = null, margins = null)
+  calcWidth = 0
+  calcHeight = 0
+  calcMargin = 0
+  if $vw isnt null
+    calcWidth = ((iwidth / $vw) * 100)
+    if margins isnt null and length(margins) > 0
+      for i in margins
+        calcMargin = calcMargin + i
+      calcHeight = ((iheight / ($vw + calcMargin)) * 100)
+    else
+      calcHeight = ((iheight / $vw) * 100)
+  else
+    $vw = iwidth
+    calcWidth : ($vw / iwidth) / 100
+    calcHeight : ($vw - ($vw - iheight)) / 100
+  width unit(calcWidth,'vw')
+  height unit(calcHeight,'vw')

@@ -3,7 +3,8 @@ rem(property,size,restLinkParams = false)
   calculatedValue = 0
   for i in size
     if i isnt 0
-      if i is a 'string' or i is a 'ident'
+      u = unit(i)
+      if i is a 'string' or i is a 'ident' or u is '%'
         if remValue isnt null
           push(remValue,i)
         else
